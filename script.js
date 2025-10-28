@@ -17,14 +17,12 @@
   cw1.addEventListener("click", function() {
     answer.innerHTML = "Loading..."
     let list = document.createElement('ul')
-    fetch('https://jsonplaceholder.typicode.com/posts')
+    fetch('https://jsonplaceholder.typicode.com/posts/1')
       .then(response => response.json())
       .then(array => {
-        for (let i = 0; i < array.length; i++) {
-          let item = document.createElement('li')
-          item.innerHTML = "userID: " + array[i].userId + " id: " + array[i].id + " title: " + array[i].title
-          list.appendChild(item)
-        }
+        let item = document.createElement('li')
+        item.innerHTML = "userID: " + array.userId + " id: " + array.id + "<br>title: " + array.title + "<br>body: " + array.body
+        list.appendChild(item)
       })
     answer.innerHTML = ""
     answer.appendChild(list)
