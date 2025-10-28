@@ -19,25 +19,25 @@
   })
 
   cw2.addEventListener("click", function() {
-    alert("Loading")
+    //TODO
+  })
+
+  cw3.addEventListener("click", function() {
     let table = document.createElement('table')
     table.innerHTML = "<tr><th>userID</th><th>id</th><th>title</th></tr>"
-    fetch('https://jsonplaceholder.typicode.com/posts')
+    fetch('https://my-json-server.typicode.com/177102proaplweb-tech/json-server/posts')
       .then(response => response.json())
       .then(array => {
+        console.log(array)
         for (let i = 0; i < array.length; i++) {
           let item = document.createElement('tr')
-          item.innerHTML = `<td>${array[i].userId}</td><td>${array[i].id}</td><td>${array[i].title}</td>`
+          item.innerHTML = `<td>${array[i].userID}</td><td>${array[i].id}</td><td>${array[i].title}</td>`
           table.appendChild(item)
           // console.log("userID:", array[i].userId + ".", "id:", array[i].id + '.', "title:", array[i].title + '.')
         }
       })
     answer.innerHTML = ""
     answer.appendChild(table)
-  })
-
-  cw3.addEventListener("click", function() {
-    //TODO
   })
 
 })();
