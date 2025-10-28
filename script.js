@@ -15,8 +15,8 @@
   })
 
   cw1.addEventListener("click", function() {
+    answer.innerHTML = "Loading..."
     let list = document.createElement('ul')
-    answer.appendChild(list)
     fetch('https://jsonplaceholder.typicode.com/posts')
       .then(response => response.json())
       .then(array => {
@@ -26,6 +26,8 @@
           list.appendChild(item)
         }
       })
+    answer.innerHTML = ""
+    answer.appendChild(list)
   })
 
   cw2.addEventListener("click", function() {
