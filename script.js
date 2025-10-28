@@ -15,16 +15,27 @@
   })
 
   cw1.addEventListener("click", function() {
-    answer.innerHTML = "Loading..."
+    answer.innerHTML = "Processing..."
     let list = document.createElement('ul')
-    fetch('https://jsonplaceholder.typicode.com/posts/1')
+    fetch('https://jsonplaceholder.typicode.com/posts', {
+      method: 'POST',
+      body: JSON.stringify({
+        title: 'foo',
+        body: 'bar',
+        userId: 1,
+      }),
+      headers: {
+        'Content-type': 'application/json; charset=UTF-8',
+      },
+    })
       .then(response => response.json())
       .then(array => {
-        let item = document.createElement('li')
-        item.innerHTML = "userID: " + array.userId + " id: " + array.id + "<br>title: " + array.title + "<br>body: " + array.body
-        list.appendChild(item)
+        // let item = document.createElement('li')
+        // item.innerHTML = "userID: " + array.userId + " id: " + array.id + "<br>title: " + array.title + "<br>body: " + array.body
+        // list.appendChild(item)
+        answer.innerHTML = "Dodano nowy post o ID: " + array.id
       })
-    answer.innerHTML = ""
+    // answer.innerHTML = ""
     answer.appendChild(list)
   })
 
